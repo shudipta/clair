@@ -33,6 +33,7 @@ import (
 
 	pb "github.com/coreos/clair/api/v3/clairpb"
 	"github.com/coreos/clair/database"
+	"fmt"
 )
 
 // handleShutdown handles the server shut down error.
@@ -148,6 +149,7 @@ func servePrometheus(mux *http.ServeMux) {
 
 // Run initializes grpc and grpc gateway api services on the same address
 func Run(Addr string, tlsConfig *tls.Config, CertFile, KeyFile string, store database.Datastore) {
+	fmt.Printf("================ clair Addr:", Addr)
 	l, err := net.Listen("tcp", Addr)
 	if err != nil {
 		log.WithError(err).Fatalf("could not listen to address" + Addr)

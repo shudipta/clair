@@ -59,6 +59,7 @@ import (
 	_ "github.com/coreos/clair/ext/vulnsrc/oracle"
 	_ "github.com/coreos/clair/ext/vulnsrc/rhel"
 	_ "github.com/coreos/clair/ext/vulnsrc/ubuntu"
+	"fmt"
 )
 
 const maxDBConnectionAttempts = 20
@@ -193,6 +194,7 @@ func main() {
 	log.SetOutput(os.Stdout)
 	log.SetFormatter(&formatter.JSONExtendedFormatter{ShowLn: true})
 
+	fmt.Println("================ config Path:", *flagConfigPath)
 	config, err := LoadConfig(*flagConfigPath)
 	if err != nil {
 		log.WithError(err).Fatal("failed to load configuration")
