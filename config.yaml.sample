@@ -95,5 +95,8 @@ clair:
       keyfile: 
       certfile: 
 
+      authtokenfile:
+      authtoken:
+
       # Optional HTTP Proxy: must be a valid URL (including the scheme).
       proxy:
